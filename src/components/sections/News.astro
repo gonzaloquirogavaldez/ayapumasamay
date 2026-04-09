@@ -1,8 +1,9 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import BlogPreview from "@/components/sections/BlogPreview.astro";
+import { resolveLocale } from "@/lib/localization-helpers";
 
-const currentLocale = Astro.currentLocale;
+const currentLocale = resolveLocale(Astro.currentLocale);
 
 const posts = await getCollection("posts");
 

@@ -1,20 +1,20 @@
 {
-	"phone": "+1 1234567890",
-	"mail": "info@yourcompany.com",
+	"phone": "+385998790631",
+	"mail": "contacto@ayapuma.org",
 	"socials": [
 		{
 			"title": "Facebook",
-			"link": "https://facebook.com",
+			"link": "https://www.facebook.com/ayapuma",
 			"icon": "ic:baseline-facebook"
 		},
 		{
 			"title": "Instagram",
-			"link": "https://www.instagram.com/",
+			"link": "https://www.instagram.com/ayapumasamay",
 			"icon": "mdi:instagram"
 		},
 		{
 			"title": "Youtube",
-			"link": "https://www.youtube.com/",
+			"link": "https://www.youtube.com/@santiagoandrade8229",
 			"icon": "mdi:youtube"
 		}
 	]

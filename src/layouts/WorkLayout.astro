@@ -7,6 +7,7 @@ import Prose from "@/components/primitives/Prose.astro";
 import Share from "@/components/primitives/Share.astro";
 import Title from "@/components/primitives/Title.astro";
 import { loadVideo } from "@/lib/asset-helpers";
+import { resolveLocale } from "@/lib/localization-helpers";
 import { Icon } from "astro-icon/components";
 import { defaultLocale } from "site";
 import BaseLayout from "./BaseLayout.astro";
@@ -15,7 +16,7 @@ type Props = {
 	frontmatter: CollectionEntry<"works">;
 };
 
-const currentLocale = Astro.currentLocale;
+const currentLocale = resolveLocale(Astro.currentLocale);
 
 interface WorkLayoutLocale {
 	visitProject: string;
@@ -26,8 +27,8 @@ interface ComponentLocales {
 }
 
 const componentLocales: ComponentLocales = {
-	it: {
-		visitProject: "Visita progetto",
+	es: {
+		visitProject: "Visitar proyecto",
 	},
 	en: {
 		visitProject: "Visit project",

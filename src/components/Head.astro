@@ -2,14 +2,17 @@
 import { pwaAssetsHead } from "virtual:pwa-assets/head";
 import { pwaInfo } from "virtual:pwa-info";
 import "@/styles/global.css";
-import { getLocalizedSettings } from "@/lib/localization-helpers";
+import {
+	getLocalizedSettings,
+	resolveLocale,
+} from "@/lib/localization-helpers";
 import { SEO, type SEOProps } from "astro-seo";
 
 type Props = {
 	seo?: SEOProps | MinimalSeo;
 };
 
-const currentLocale = Astro.currentLocale;
+const currentLocale = resolveLocale(Astro.currentLocale);
 
 const { seo: defaultSeo, style } = getLocalizedSettings(currentLocale);
 

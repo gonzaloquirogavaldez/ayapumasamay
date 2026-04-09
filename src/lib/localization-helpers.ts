@@ -2,19 +2,19 @@ import contacts from "@/content/global/contacts.json";
 import footerEn from "@/content/global/en/footer.json";
 import headerEn from "@/content/global/en/header.json";
 import seoEn from "@/content/global/en/seo.json";
-import footerIt from "@/content/global/it/footer.json";
-import headerIt from "@/content/global/it/header.json";
-import seoIt from "@/content/global/it/seo.json";
+import footerEs from "@/content/global/es/footer.json";
+import headerEs from "@/content/global/es/header.json";
+import seoEs from "@/content/global/es/seo.json";
 import style from "@/content/global/style.json";
 import widget from "@/content/global/widget.json";
 import { defaultLocale, locales } from "site.config";
 
 const settings: Record<string, LocalizedSettings> = {
-	it: {
-		header: headerIt,
-		footer: footerIt,
+	es: {
+		header: headerEs,
+		footer: footerEs,
 		contacts: contacts,
-		seo: seoIt,
+		seo: seoEs,
 		style: style,
 		widget: widget,
 	},
@@ -30,6 +30,10 @@ const settings: Record<string, LocalizedSettings> = {
 
 export function getLocalizedSettings(locale?: string): LocalizedSettings {
 	return settings[locale ?? defaultLocale] ?? settings[defaultLocale];
+}
+
+export function resolveLocale(locale?: string): string {
+	return locale ?? defaultLocale;
 }
 
 export function isLocalizedUrl(url: string): boolean {

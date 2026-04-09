@@ -1,10 +1,21 @@
 ---
-import { getLocalizedSettings } from "@/lib/localization-helpers";
+import {
+	getLocalizedSettings,
+	resolveLocale,
+} from "@/lib/localization-helpers";
 import { Icon } from "astro-icon/components";
 
-const currentLocale = Astro.currentLocale;
+const currentLocale = resolveLocale(Astro.currentLocale);
 
 const { widget } = getLocalizedSettings(currentLocale);
+
+const widgetIconAliases: Record<string, string> = {
+	whatsapp: "mdi:whatsapp",
+};
+
+const widgetIcon = widget.icon.includes(":")
+	? widget.icon
+	: (widgetIconAliases[widget.icon.toLowerCase()] ?? "mdi:whatsapp");
 ---
 
 <a
@@ -16,7 +27,7 @@ const { widget } = getLocalizedSettings(currentLocale);
 	target="_blank"
 >
 	<Icon
-		name={widget.icon}
+		name={widgetIcon}
 		size={30}
 		class="group-hover:scale-105 transition-all"
 	/>

@@ -1,9 +1,10 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { resolveLocale } from "@/lib/localization-helpers";
 import { Icon } from "astro-icon/components";
 import { defaultLocale } from "site.config";
 
-const currentLocale = Astro.currentLocale;
+const currentLocale = resolveLocale(Astro.currentLocale);
 
 export interface Props {
 	href?: string;

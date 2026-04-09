@@ -1,10 +1,13 @@
 ---
 import Button from "@/components/primitives/Button.astro";
 import Link from "@/components/primitives/Link.astro";
-import { getLocalizedSettings } from "@/lib/localization-helpers";
+import {
+	getLocalizedSettings,
+	resolveLocale,
+} from "@/lib/localization-helpers";
 import { Icon } from "astro-icon/components";
 
-const currentLocale = Astro.currentLocale;
+const currentLocale = resolveLocale(Astro.currentLocale);
 
 const { contacts } = getLocalizedSettings(currentLocale);
 

@@ -3,8 +3,9 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import type { ButtonProps } from "@/components/primitives/Button.astro";
 import Link from "@/components/primitives/Link.astro";
 import WorkPreview from "@/components/sections/WorkPreview.astro";
+import { resolveLocale } from "@/lib/localization-helpers";
 
-const currentLocale = Astro.currentLocale;
+const currentLocale = resolveLocale(Astro.currentLocale);
 
 const works = await getCollection("works");
 

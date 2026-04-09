@@ -2,11 +2,15 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { loadVideo } from "@/lib/asset-helpers";
-import { translatePath, unlocalizedUrl } from "@/lib/localization-helpers";
+import {
+	resolveLocale,
+	translatePath,
+	unlocalizedUrl,
+} from "@/lib/localization-helpers";
 import { Icon } from "astro-icon/components";
 import { defaultLocale } from "site";
 
-const currentLocale = Astro.currentLocale;
+const currentLocale = resolveLocale(Astro.currentLocale);
 
 interface Props {
 	work: CollectionEntry<"works">;

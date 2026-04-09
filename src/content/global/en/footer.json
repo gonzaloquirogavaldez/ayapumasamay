@@ -1,9 +1,9 @@
 {
-	"title": "Do You Have Any Questions?<br/> Don't Hesitate to Contact Us!",
-	"copyright": "© 2024 Your Company",
+	"title": "Tienes alguna pregunta?<br/> Contacta con nosotros",
+	"copyright": "© 2026 AyaPuma Samay. All rights reserved.",
 	"buttons": [
 		{
-			"text": "Contact Us",
+			"text": "Contacto",
 			"url": "/contact"
 		}
 	]

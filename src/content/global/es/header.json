@@ -1,0 +1,28 @@
+{
+	"logo": {
+		"imagePath": "/src/assets/global/navigation/ayapuma-samaylogo.png"
+	},
+	"pages": [
+		{
+			"title": "Inicio",
+			"link": "/"
+		},
+		{
+			"title": "Nosotros",
+			"link": "/about"
+		},
+		{
+			"title": "Campañas",
+			"link": "/works"
+		},
+		{
+			"title": "Novedades",
+			"link": "/news"
+		},
+		{
+			"title": "Contacto",
+			"link": "/contact"
+		}
+	],
+	"actions": []
+}

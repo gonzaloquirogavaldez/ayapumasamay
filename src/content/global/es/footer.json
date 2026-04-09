@@ -1,0 +1,10 @@
+{
+	"title": "¿Tienes alguna pregunta?<br/> No dudes en contactarnos!",
+	"copyright": "© 2026 AyaPuma Samay. Todos los derechos reservados.",
+	"buttons": [
+		{
+			"text": "Contacto",
+			"url": "/contact"
+		}
+	]
+}

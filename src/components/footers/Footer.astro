@@ -3,10 +3,14 @@ import { getCollection } from "astro:content";
 import Container from "@/components/primitives/Container.astro";
 import Link from "@/components/primitives/Link.astro";
 import { getLocalizedSettings } from "@/lib/localization-helpers";
-import { translatePath, unlocalizedUrl } from "@/lib/localization-helpers";
+import {
+	resolveLocale,
+	translatePath,
+	unlocalizedUrl,
+} from "@/lib/localization-helpers";
 import { defaultLocale, locales } from "site";
 
-const currentLocale = Astro.currentLocale;
+const currentLocale = resolveLocale(Astro.currentLocale);
 
 const { footer, contacts } = getLocalizedSettings(currentLocale);
 
