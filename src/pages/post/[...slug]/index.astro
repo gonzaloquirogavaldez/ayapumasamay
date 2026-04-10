@@ -1,17 +1,19 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import PostLayout from "@/layouts/PostLayout.astro";
-import { getCollectionStaticPaths } from "@/lib/collection-helpers";
+import { getPostsFromWordPress } from "@/lib/wordpress-helpers";
 
-export interface Props {
-	data: CollectionEntry<"posts">;
+export const prerender = false; // SSR
+
+const { slug } = Astro.params;
+const fullSlug = Array.isArray(slug) ? slug.join('/') : slug || '';
+
+const posts = await getPostsFromWordPress();
+const post = posts.find(p => p.slug === `en/${fullSlug}`);
+
+if (!post) {
+	return Astro.redirect('/404');
 }
 
-export async function getStaticPaths() {
-	return await getCollectionStaticPaths("posts", "en");
-}
-
-const { data: post } = Astro.props;
 const { Content } = await post.render();
 ---
 

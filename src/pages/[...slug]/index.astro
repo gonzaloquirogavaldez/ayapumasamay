@@ -7,6 +7,8 @@ export interface Props {
 	data: CollectionEntry<"pages">;
 }
 
+export const prerender = true;
+
 export async function getStaticPaths() {
 	return getCollectionStaticPaths("pages");
 }

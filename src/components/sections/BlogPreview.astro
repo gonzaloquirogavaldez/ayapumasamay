@@ -13,7 +13,7 @@ import { defaultLocale } from "site";
 const currentLocale = resolveLocale(Astro.currentLocale);
 
 interface Props {
-	post: CollectionEntry<"posts">;
+	post: any; // Cambiar a any para compatibilidad
 }
 
 const { post } = Astro.props;
@@ -43,11 +43,13 @@ const localizedPath = translatePath(
 				/>
 			</div>
 		</div>
+		{post.data.cover && (
 		<Image
 			src={post.data.cover}
 			alt={post.data.title}
 			class="cursor-pointer align-middle inline-block w-full max-w-full rounded-2xl object-cover h-64"
 		/>
+		)}
 	</Link>
 	<div class="items-start flex-col pt-8 flex">
 		<span

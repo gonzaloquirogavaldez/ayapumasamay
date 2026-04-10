@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { getPostsFromWordPress } from "@/lib/wordpress-helpers";
 import Container from "@/components/primitives/Container.astro";
 import Link from "@/components/primitives/Link.astro";
 import { getLocalizedSettings } from "@/lib/localization-helpers";
@@ -23,9 +24,9 @@ function isActiveLocale(locale: string): boolean {
 	return locale === currentLocale;
 }
 
-const pages = await getCollection("pages");
-const services = await getCollection("services");
-const posts = await getCollection("posts");
+const pages = await getCollection("pages") as any[];
+const services = await getCollection("services") as any[];
+const posts = await getPostsFromWordPress();
 
 // get top 6 pages which are informational pages
 const topInfoPages = pages
@@ -59,20 +60,20 @@ const topServices = services
 	.slice(0, 6);
 
 const lastPosts = posts
-	.map((page) => {
-		const [lang, ...slug] = page.slug.split("/");
+	.map((post: any) => {
+		const [lang, ...slug] = post.slug.split("/");
 		return {
-			...page,
+			...post,
 			lang: lang,
 			slug: translatePath(
 				lang,
-				`/post${unlocalizedUrl(`/${page.slug}`)}`,
+				`/post${unlocalizedUrl(`/${post.slug}`)}`,
 			),
 		};
 	})
-	.filter((page) => page.lang === currentLocale)
+	.filter((post: any) => post.lang === currentLocale)
 	.sort(
-		(a, b) =>
+		(a: any, b: any) =>
 			new Date(b.data.lastUpdateDate).getTime() -
 			new Date(a.data.lastUpdateDate).getTime(),
 	)
@@ -127,17 +128,17 @@ const lastPosts = posts
 									<p
 										class="text-white border-b-2 text-lg pb-1 mb-3 border-white border-solid"
 									>
-										Collegamenti utili
+										AyaPuma Samay
 									</p>
 									<ul
 										class="text-white/[0.65] mb-3 list-none"
 									>
 										{
 											topInfoPages.map(
-												({ data: { title }, slug }) => (
+												(page) => (
 													<li>
-														<a href={slug}>
-															{title}
+														<a href={page.slug}>
+															{page.data.title}
 														</a>
 													</li>
 												),
@@ -152,14 +153,14 @@ const lastPosts = posts
 								<p
 									class="text-white border-b-2 text-lg pb-1 mb-3 border-white border-solid"
 								>
-									Services
+									Proyectos
 								</p>
 								<ul class="text-white/[0.65] mb-3 list-none">
 									{
 										topServices.map(
-											({ data: { title }, slug }) => (
+											(service) => (
 												<li>
-													<a href={slug}>{title}</a>
+													<a href={service.slug}>{service.data.title}</a>
 												</li>
 											),
 										)
@@ -172,14 +173,14 @@ const lastPosts = posts
 								<p
 									class="text-white border-b-2 text-lg pb-1 mb-3 border-white border-solid"
 								>
-									Latest posts
+									Novedades
 								</p>
 								<ul class="text-white/[0.65] mb-3 list-none">
 									{
 										lastPosts.map(
-											({ data: { title }, slug }) => (
+											(post: any) => (
 												<li>
-													<a href={slug}>{title}</a>
+													<a href={post.slug}>{post.data.title}</a>
 												</li>
 											),
 										)
@@ -197,7 +198,7 @@ const lastPosts = posts
 						<div
 							class="items-center py-3 px-5 flex border-2 border-white border-solid rounded-3xl"
 						>
-							<div>stay in touch</div>
+							<div>Mantente en contacto</div>
 						</div>
 					</div>
 					<div class="mt-10 text-lg">
@@ -247,13 +248,13 @@ const lastPosts = posts
 							><p
 								class="text-white border-b-2 cursor-pointer pb-1 border-white border-solid"
 							>
-								Privacy policy
+								Políticas de privacidad
 							</p></a
 						><a href="/terms" class="inline-block max-w-full"
 							><p
 								class="text-white border-b-2 cursor-pointer pb-1 border-white border-solid"
 							>
-								Terms
+								Términos
 							</p></a
 						>
 					</div>

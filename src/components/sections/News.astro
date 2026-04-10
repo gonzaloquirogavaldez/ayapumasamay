@@ -1,11 +1,11 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getPostsFromWordPress } from "@/lib/wordpress-helpers";
 import BlogPreview from "@/components/sections/BlogPreview.astro";
 import { resolveLocale } from "@/lib/localization-helpers";
 
 const currentLocale = resolveLocale(Astro.currentLocale);
 
-const posts = await getCollection("posts");
+const posts = await getPostsFromWordPress();
 
 const allPosts = posts
 	.map((post) => {
@@ -20,7 +20,7 @@ const allPosts = posts
 	.sort(
 		(a, b) =>
 			a.data.lastUpdateDate.getTime() - b.data.lastUpdateDate.getTime(),
-	) as CollectionEntry<"posts">[];
+	) as any[]; // Cambiar tipo si necesario
 ---
 
 <div

@@ -11,7 +11,7 @@ import { defaultLocale } from "site";
 import BaseLayout from "./BaseLayout.astro";
 
 type Props = {
-	frontmatter: CollectionEntry<"posts">;
+	frontmatter: any; // Cambiar para compatibilidad
 };
 
 const currentLocale = resolveLocale(Astro.currentLocale);
