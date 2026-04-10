@@ -14,7 +14,7 @@ import { defaultLocale, locales, siteTitle, siteUrl } from "./site.config";
 // https://astro.build/config
 export default defineConfig({
 	site: siteUrl,
-	output: "hybrid",
+	output: "static",
 	adapter: cloudflare({
 		imageService: "compile",
 		experimental: {
