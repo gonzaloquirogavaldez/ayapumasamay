@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { getPostsFromWordPress } from "@/lib/wordpress-helpers";
 import Container from "@/components/primitives/Container.astro";
 import Link from "@/components/primitives/Link.astro";
+import { Icon } from "astro-icon/components";
 import { getLocalizedSettings } from "@/lib/localization-helpers";
 import {
 	resolveLocale,
@@ -215,6 +216,20 @@ const lastPosts = posts
 							>
 								{contacts.mail}
 							</a>
+							<div class="flex flex-row gap-3">
+								{contacts.socials.map((social: any) => (
+									<a
+										key={social.title}
+										href={social.link}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="pb-1 mb-3 border-white border-solid flex items-center gap-2"
+									>
+										<Icon name={social.icon} class="w-5 h-5" />
+
+									</a>
+								))}
+							</div>
 						</div>
 					</div>
 				</div>
