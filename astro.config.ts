@@ -2,7 +2,7 @@ import alpinejs from "@astrojs/alpinejs";
 import cloudflare from "@astrojs/cloudflare";
 import markdoc from "@astrojs/markdoc";
 import react from "@astrojs/react";
-import sitemap from "@astrojs/sitemap";
+//import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import keystatic from "@keystatic/astro";
 import AstroPWA from "@vite-pwa/astro";
@@ -14,7 +14,7 @@ import { defaultLocale, locales, siteTitle, siteUrl } from "./site.config";
 // https://astro.build/config
 export default defineConfig({
 	site: siteUrl,
-	output: "static",
+	output: "hybrid",
 	adapter: cloudflare({
 		imageService: "compile",
 		experimental: {
@@ -43,7 +43,7 @@ export default defineConfig({
 			// Base style is applied on the file global.css
 			applyBaseStyles: false,
 		}),
-		sitemap(),
+		//sitemap(),
 		icon(),
 		react(),
 		markdoc(),
